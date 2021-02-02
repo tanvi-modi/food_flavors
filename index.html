@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title> Food and Flavors of India_MiniProject1 </title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;600;700&family=Merriweather:wght@900&display=swap"
+        rel="stylesheet">
+        <link rel = "stylesheet" href = "food_style.css">
+</head>
+
+<body>
+    <!-- hero -->
+    <div class="hero-image">
+        <div class="hero-text">
+            Food and Flavors of India
+            <p> Indian cuisine consists of a variety of regional and traditional cuisines native to the Indian
+                subcontinent. Given the diversity in soil, climate, culture, ethnic groups, and occupations, these
+                cuisines vary substantially and use locally available spices, herbs, vegetables, and fruits. Indian food
+                is also heavily influenced by religion, in particular Hinduism, cultural choices and traditions. </p>
+            <p2> Lets explore the pattern of tastebuds across the country</p2>
+        </div>
+    </div>
+
+    <!-- main-content -->
+    <div class="main-content">
+        <!-- section1 -region-introduction -->
+        <div class="grid-container">
+            <div class="Header">
+                <h2> Diversity in food across Regions of India </h2>
+            </div>
+            <div class="Text-1">
+                <p> India’s population is highly diverse, with cultural identities heavily influenced by religious and
+                    regional particularities. Ayurvedic teachings, emphasizing equilibrium between mind, body, and
+                    spirit, have
+                    exerted an influence over Indian cuisine in general, dictating ingredient pairings and cooking
+                    practices.
+                    <br>
+                    <br>
+                    Approximately one-third of India’s population is vegetarian, dictated by their Hindu, Jain, or
+                    Buddhist faiths. For example, Hindu followers abstain from beef, because cattle are sacred in this
+                    faith.
+                    Depending on the dominant religious beliefs of a region, the cuisine in a particular area may omit
+                    certain
+                    ingredients to comply with religious law. </p>
+            </div>
+            <div class="india-map">
+                <img src="Images/india-map-regions.png" , width="450">
+            </div>
+        </div>
+        <div class="flex-container1">
+            <div class="Image-1">
+                <img src="Images/Dhokla.jpg" , width="250" , height="175">
+            </div>
+            <div class="image2">
+                <img src="Images/Punjabi-Food-1.jpg" , width="250" , height="175">
+            </div>
+            <div class="image3">
+                <img src="Images/Dosa-500x400.jpg" , width="250" , height="175">
+            </div>
+            <div class="image4">
+                <img src="Images/paneer-saag.jpg" , width="250" , height="175">
+            </div>
+        </div>
+    </div>
+
+    <!-- section2 - visualizing data-->
+    <div class="section2">
+        <h2> Visualizing Food Patterns </h2>
+        <p> We will be going through an overview of food patterns of Indian Cuisine based on <b>flavors, cook-time, type
+                of courses and diets</b> across different regions and states of India.
+            The dataset for the following visualizations can be found <a
+                href="https://www.kaggle.com/nehaprabhavalkar/indian-food-101">here </a>. </p>
+    </div>
+
+    <!-- container2-->
+    <div class="grid-container-2">
+        <div class="topic">
+            <h2> Flavors </h2>
+        </div>
+        <div class="col-1">
+            <h3> Across Regions </h3>
+        </div>
+        <div class="col-2">
+            <h3> Within Diets</h3>
+        </div>
+        <div class="region-chart-1">
+            <img src="Images/flavor_regions.png" , width="500">
+        </div>
+        <div class="col-2-chartB">
+            <img src="Images/edited pies copy.jpg" , width="500">
+        </div>
+    </div>
+    <div class="explanation">
+        <ul>
+            <li>The stacked bar-graph on the left shows us the distribution of flavors across all the regions of India.
+                Spicy and sweet flavors are the most predominant flavors in every region; Most of the dishes in the west
+                and east regions are spicy and sweet,
+                and we see very few traces of the bitter and sour flavors across the country. </li>
+            <li>The pie-charts on the right show us a spread of flavors within a vegetarian and a non-vegetarian diet.
+                We see that all the non-vegetarian dishes are spicy. </li>
+        </ul>
+    </div>
+
+    <!-- container3-->
+    <div class="grid-container-3">
+        <div class="topic">
+            <h2> Cooking time </h2>
+        </div>
+
+        <div class="col-1">
+            <h3> For all the Regions </h3>
+        </div>
+        <div class="col-2">
+            <h3> For all the Courses </h3>
+        </div>
+        <div class="region-chart-1">
+            <img src="Images/cooktime_regions.png" , width="600">
+        </div>
+        <div class="col-2-chartB">
+            <img src="Images/cooktime_courses.png" , width="600">
+        </div>
+    </div>
+    <br>
+    <div class="explanation">
+        <ul>
+            <li> The pie chart shows us the avrg. cooking time for all courses of meals.
+                Dessert usually takes the longest, & snacks take the least time to cook. </li>
+            <li> In the scatter plot, we see the average cook-time vz. the average prep-time of all dishes for each
+                region.
+                Dishes made in the North-East usually require a very low cooking time, because they are steamed,
+                with minimal use of spices, and more use of vegetables or meat. </li>
+            <li> <a href="https://heartycooksroom.com/hyderabadi-chicken-biryani/">Biryani</a>, a famous dish made in a
+                clay pot, was first orginated in Central India. It is one of
+                dishes that need very
+                less prepartion time, but its flavor is enhanced by cooking it on low flame for hours. </li>
+        </ul>
+    </div>
+
+    <!-- container4-->
+    <div class="grid-container-4">
+        <div class="topic">
+            <h2> Let us analyze 6 states – <br> One from each region </h2>
+            <ol>
+                <li> North - <b>Punjab </b></li>
+                <li> East - <b>West Bengal</b> </li>
+                <li> Northeast<b> - Assam</b> </li>
+                <li> Central-South - <b>Andhra Pradhesh</b> </li>
+                <li> South - <b>TamilNadu</b> </li>
+                <li> West - <b>Gujarat</b> </li>
+            </ol>
+        </div>
+        <div class="col-1">
+            <h3> Distribution of Courses </h3>
+        </div>
+        <div class="col-2">
+            <h3> Cook-time </h3>
+        </div>
+        <div class="region-chart-1">
+            <img src="Images/courses_states.png", width="1200">
+        </div>
+        <div class="col-2-chartB">
+            <img src="Images/cook_time_states1.png" , width="400">
+        </div>
+    </div>
+    <div class="explanation">
+        <ul>
+            <li> The grouped bar-chart shows which type of meal is really dominant in each of these states.
+                <b>Punjab</b> stands top on main course, and is very famous as well. Any "North-indian" food that we get
+                in
+                famous restaurants is typically originated from Punjab and its nearby states in the North.
+                North Indian cuisine uses a lot of <b>Dairy</b> - Paneer (cottage cheese), malai (cream), and
+                ghee(clarified
+                butter). </li>
+            <li> <b>Gujarat</b> is known for fast food, and delicious snacks, and hence stands highest in the list. The
+                locals
+                of Gujarat are huge foodies and tend to innovate snack items with every possible ingredient!
+                Some of the <a href="https://www.tasteatlas.com/most-popular-snacks-in-gujarat">famous snacks in
+                    Gujarat</a> are Dhokla, Khandvi, Khakra, Patra, Jalebi & Faafda. </li>
+            <li> <b>West Bengal</b> stands high on dessert. They are well-known for "Mithai's" - these are a variety of
+                dry-fruit sweets and sweets like <a href="https://en.wikipedia.org/wiki/Rasgulla">Rasgullas</a> & <a
+                    href="https://www.ordermeal.co.nz/blog/gulab-jamun-the-sweetest-indian-food-that-you-can-eat-today/#:~:text=Gulab%20Jamun%20is%20a%20highly,dough%E2%80%9D%20version%20of%20regular%20milk.">Gulab-jamuns</a>
+                that are sweets dipped in a sugar syrup. </li>
+            <li> My mouth is watering as I write about these foods! </li>
+            <li> The pie chart on the right, shows a distribution of the average cook-time for each of these states.
+                It looks like an equal spread, with Maharashtra having a slightly higher cooking-time. </li>
+        </ul>
+    </div>
+
+    <!-- container5-->
+    <div class="grid-container-5">
+        <div class="topic">
+            <h3> Indian food is <b>SPICY and is full of flavors of spices! </b> </h3>
+            <p> Cook time for Spicy Dishes for both Vegetarian and Non-Vegetarian diet
+            <p>
+        </div>
+        <div id="spicy-cook">
+            <img src="Images/cooktime_spicy_nvv.png" , width="750">
+        </div>
+    </div>
+    <div id="last-one" class="explanation">
+        <ul>
+            <li> Similar to most cuisines, cooking time for vegetarian dishes is much higher than non-vegetarian dishes.
+            </li>
+            <li> North and West regions of India make spicy main courses and snacks that take the maximum time, while
+                South indian dishes like the Biryani,
+                take the most time in the Non-vegetarian category.</li>
+            <li> It is interesting to note that North-eastern food in India are hardly vegetarian (atleast from our
+                data).
+                some of the states in the Western region follow Buddhism and Jainism, and follow strict dietary
+                restictions - which is
+                why they stand least within the Non-vegetarian category.
+            </li>
+        </ul>
+    </div>
+
+    <!-- funfact -->
+    <div class="section3">
+        <h2> <u> Fun-Fact:</u> Indian food I made today! </h2>
+    </div>
+    <div class="flex-container2">
+        <div id="myfood">
+            <h3> Aloo Dum & Puris</h3>
+            <img src="Myfood/Aloo-dum.jpg" , width="450" , height="350">
+        </div>
+        <div class="text-2">
+
+            <ul>
+                <b>About me:</b>
+                <li> My ancestral origin is Gujarat, the <b>Western region</b> of India. </li>
+                <li> I am born and brought up in TamilNadu which is in the <b>South</b> of India.</li>
+                <li> Since my religion and culture is based on western traditions of India, I am a <b>vegetarian</b>.
+                </li> <br>
+
+                <b> The Gravy: Aloo Dum: </b>
+                <li> <u> Flavor: Spicy</u> </li>
+                <li> The gravy is the aloo dum, which is made of baby potatoes in a rich gravy
+                    that is full of spices.
+                    It consists of cashew,tomato, ginger, chilli and onion paste with a dash of yogurt to balance the
+                    flavor. The spices include cardomom, cinnamon, cloves, bay-leaf and garam masala powder.
+                    It is a slow cooked dish originated in Kashmir, in the North of India. </li>
+                <li> Prep- time : 20 minutes</li>
+                <li> Cook-time: 45 minutes</li>
+                <li> You can find the recipe <a href="https://www.indianhealthyrecipes.com/dum-aloo-recipe/"> here!</a>
+                </li>
+                <br>
+                <b> The Bread: Puris: </b>
+                <li> <u> Flavor: Savory </u> </li>
+                <li> The puris are a type of bread that is eaten with the gravy. The dough is made of wheat flour, salt,
+                    corriander leaves and a herb called ajwain, which enhances the flavor.
+                    This is rolled out into small shapes and is deep fried. </li>
+                <li> Prep- time : 15 minutes</li>
+                <li> Cook-time: 10 minutes</li>
+                <li> You can find the recipe <a
+                        href="https://www.vegrecipesofindia.com/poori-a-kind-of-fried-indian-bread/"> here!</a></li>
+            </ul>
+            <br>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="section4">
+        <p> Design and Content by <b>Tanvi Modi</b></p>
+        <div id="references">
+            <b>References </b>
+            <li> Data: <a href="https://www.kaggle.com/Kaggle"> Kaggle </a> </li>
+            <li> Code: <a href="https://www.w3schools.com/w3css/default.asp"> W3 Schools </a>, <a
+                    href="https://stackoverflow.com/"> StackOverflow</a>, <a href= "https://grid.layoutit.com/"> Grid Generator </a></li>
+            <li> Design Inspiration: <a href="http://www.csszengarden.com/">CSS Zen Garden </a> </li>
+            <li> Visualization: <a href="https://www.r-graph-gallery.com/">R Graph Gallery </a> </li>
+        </div>
+    </div>
+</body>
+
+</html>

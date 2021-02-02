@@ -1,0 +1,248 @@
+---
+title: "Mini_Project_IndianFood"
+author: "Tanvi Modi"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+
+install.packages("tidyverse")
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(RColorBrewer)
+
+# Loading the data
+indian.food <- read_csv("data/Indian_Food_Data.csv")
+View(indian.food)
+
+# Stacked bar chart
+
+food.data <- indian.food %>% filter(state != "-1", flavor_profile != "-1", region != "-1", prep_time != "-1", cook_time != "-1")
+
+ggplot(data = food.data, mapping = aes( x = region, fill = flavor_profile )) +
+  geom_bar( width=0.5) +
+  scale_fill_brewer(palette = "Set2") +
+  labs(title = "Distribution of flavor profiles across different regions of India", x = "Region", y = "Count", fill = " Flavor") +
+  theme(panel.background = element_rect(fill = "white"),
+        axis.line = element_line( size = 0.6, color = "grey"),
+        panel.border = element_rect(linetype = "dashed", fill = NA),
+        legend.text = element_text(size = 10, color = "#696969" ),
+        legend.title = element_text(face = "bold", color= "#696969"),
+        plot.title = element_text(size = rel(1.3), color = "#696969", face = "bold"),
+        panel.grid.major.x = element_line(size = 0.1, color = "grey"),
+        legend.box.background = element_rect(color = "lightgrey", size = 0.2),
+        legend.box.margin = margin(4,4,4,4),
+        legend.justification = "bottom") +
+  coord_flip()
+
+ggsave("flavor_regions.png", width = 10)
+        
+```
+
+```{r}
+
+p1 <- food.data %>% 
+      group_by(region) %>% 
+      summarize(average.cook.time = mean(cook_time, na.rm = TRUE), average.prep.time = mean(prep_time, na.rm = TRUE)) %>%
+      ggplot(mapping = aes(x = average.cook.time, y = average.prep.time)) +
+      geom_point(mapping = aes(color = region), size = 7) +
+      labs(title = "Regionwise distribution of average cook & prep time of dishes", x = " Average Cook Time (minutes)", y = " Average Prep Time (minutes)", color = "Region") + 
+      theme_linedraw() +
+      theme(
+        panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(linetype = "dashed", fill = NA),
+        axis.line = element_line( size = 0.6, color = "grey"),
+        legend.text = element_text(size = 10, color = "#696969" ),
+        legend.title = element_text(face = "bold", color= "#696969"),
+        plot.title = element_text(size = rel(1.3), color = "#696969", face = "bold"),
+        legend.box.background = element_rect(color = "lightgrey", size = 0.2),
+        legend.box.margin = margin(4,4,4,4),
+        legend.justification = "bottom")
+    
+  p1 + scale_color_brewer(palette = "Dark2") 
+  ggsave("cooktime_regions.png", width = 10)
+
+```
+
+```{r}
+
+p2 <- food.data %>% 
+  select(state, course) %>%
+  filter(state %in% c('Gujarat','Andhra Pradesh', 'Punjab', 'West Bengal', 'Maharashtra', 'Assam')) %>%
+  ggplot(mapping = aes(x= state, fill = course)) +
+  geom_bar(width = 0.5, position = 'dodge') + 
+  labs(title = "Comparison in type of meal for 6 states, each from one region", x = "State", y = "Count", fill = "Course") +
+  theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(linetype = "dashed", fill = NA),
+        axis.line = element_line( size = 0.6, color = "grey"),
+        panel.grid.major.y = element_line(size = 0.1, color = "grey"),
+        legend.text = element_text(size = 10, color = "#696969" ),
+        legend.title = element_text(face = "bold", color= "#696969"),
+        plot.title = element_text(size = rel(1.3), color = "#696969", face = "bold"),
+        legend.box.background = element_rect(color = "lightgrey", size = 0.2),
+        legend.box.margin = margin(4,4,4,4),
+        legend.justification = "bottom") 
+
+
+p2 + scale_fill_brewer(palette = "Accent") 
+
+ggsave("courses_states.png", width = 10)
+  
+```
+
+
+```{r}
+
+# food.data %>%
+# filter(ingredients %in% c('garam masala', 'garam masala powder', 'green chillies', 'chili powder', 'chili', 'chillies', 'red chilli' , 'green chili', 'black pepper'))
+
+
+# food.data %>%
+# filter(stringr::str_detect(ingredients, 'green chillies|chili powder|garam masala|garam masala powder|chili|chillies|red chilli|green chili|black pepper'))
+
+
+
+food.data %>%
+  select(cook_time, diet, flavor_profile, region) %>%
+  filter(flavor_profile %in% "spicy") 
+
+  ggplot(mapping = aes( x = region, y = cook_time, fill = diet)) +
+  geom_bar(stat = 'identity', width = 0.4) +
+  facet_wrap(~diet) +
+  labs(title = "Cook time for spicy dishes region-wise", y = "Cook Time (minutes)", x = "Region", fill = "Diet", Facet = "Non Vegetarian", "Vegetarian") +
+  scale_fill_manual(values = c("#e60000", "#009900")) +
+  coord_flip() +
+   theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(color = "lightgrey", fill = NA),
+        axis.line = element_line( size = 0.6, color = "grey"),
+        panel.grid.major.x = element_line(size = 0.1, color = "grey"),
+        panel.spacing = unit(1, "lines"),
+        strip.text.x = element_text(colour = "#696969", face = "bold"),
+        legend.text = element_text(size = 10, color = "#696969" ),
+        legend.title = element_text(face = "bold", color= "#696969"),
+        plot.title = element_text(size = rel(1.3), color = "#696969", face = "bold"),
+        legend.box.background = element_rect(color = "lightgrey", size = 0.2),
+        legend.box.margin = margin(4,4,4,4),
+        legend.justification = "bottom") 
+ggsave("cooktime_spicy_nvv.png", width = 10)
+
+```
+
+```{r}
+
+# Finding the count for each category
+p3 <- food.data %>%
+  select(flavor_profile, diet) %>%
+  filter(diet %in% "vegetarian") %>%
+  group_by(flavor_profile) %>%
+  summarize(count = n())
+p3 
+
+# Grouping for the pie chart
+fnl <- data.frame(
+  group= p3[["flavor_profile"]],
+  value= p3[["count"]]
+)
+fnl
+
+# Basic piechart
+ggplot(fnl, aes(x = "", y=value, fill=group)) +
+  geom_bar(stat="identity", width=1, color="white") +
+  coord_polar("y", start=0) +
+  labs(title = "Flavor distribution for Vegetarian Diet",fill = "Flavor") +
+  scale_fill_brewer(palette = "Pastel1") +
+  theme_void()
+  
+ggsave("flavors_veg.png", width = 15)
+  
+```
+
+```{r}
+
+
+# Finding the count for each category
+p3 <- food.data %>%
+  select(flavor_profile, diet) %>%
+  filter(diet %in% "non vegetarian") %>%
+  group_by(flavor_profile) %>%
+  summarize(count = n())
+p3 
+
+# Grouping for the pie chart
+fnl <- data.frame(
+  group= p3[["flavor_profile"]],
+  value= p3[["count"]]
+)
+fnl
+
+# Basic piechart
+ggplot(fnl, aes(x = "", y=value, fill=group)) +
+  geom_bar(stat="identity", width=1) +
+  coord_polar("y", start=0) +
+  labs(title = "Flavor distribution for Non-Vegetarian Diet",fill = "Flavor") +
+  scale_fill_brewer(palette = "Pastel1") +
+  theme_void()
+  
+ggsave("flavors_non-veg.png", width = 15)
+  
+```
+ 
+
+```{r}
+# Finding the count for each category
+p5 <- food.data %>%
+  select(cook_time, course) %>%
+  group_by(course) %>%
+  summarize(average.cook.time = mean(cook_time))
+p5 
+
+# Grouping for the pie chart
+fnl1 <- data.frame(
+  group= p5[["course"]],
+  value= p5[["average.cook.time"]]
+)
+fnl1
+
+# Basic piechart
+ggplot(fnl1, aes(x = "", y=value, fill=group)) +
+  geom_bar(stat="identity", width=1) +
+  coord_polar("y", start=0) +
+  labs(title = "Cook time for all the courses",fill = "Course") +
+  scale_fill_brewer(palette = "Reds") +
+  theme_void()
+ggsave("cooktime_courses.png", width = 10)
+```
+
+
+
+```{r}
+# Finding the count for each category
+p6 <- food.data %>%
+  select(cook_time, state) %>%
+  filter(state %in% c ('Gujarat', 'Andhra Pradesh', 'Assam', 'West Bengal', 'Maharashtra', 'Punjab')) %>%
+  group_by(state) %>%
+  summarize(average.cook.time = mean(cook_time))
+p6 
+
+# Grouping for the pie chart
+fnl2 <- data.frame(
+  group= p6[["state"]],
+  value= p6[["average.cook.time"]]
+)
+fnl2
+
+# Basic piechart
+ggplot(fnl2, aes(x = "", y=value, fill=group)) +
+  geom_bar(stat="identity", width=1) +
+  coord_polar("y", start=0) +
+  labs(title = "Cook time for 6 states, each from one region",fill = "State") +
+  scale_fill_brewer(palette = "Set3") +
+  theme_void()
+ggsave("cook_time_states.png", width = 10)
+```
